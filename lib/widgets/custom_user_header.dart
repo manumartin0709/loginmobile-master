@@ -29,7 +29,7 @@ class CustomUserHeader extends StatelessWidget {
                 Row (
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text("Joselete"),
+                    Text(provider.user!),
                     IconButton(
                       icon: const Icon(Icons.people), 
                       onPressed: () {
