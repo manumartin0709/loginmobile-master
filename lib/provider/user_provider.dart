@@ -4,9 +4,20 @@ import 'package:dio/dio.dart';
 
 class UserProvider extends ChangeNotifier {
 
+   String? user = "";
+  String? nombre = "";
+
   List<Usuario> userList = [];
   final _dio = Dio();
-  
+   
+   bool login( String nombre, String password){
+
+    user = nombre;
+    this.nombre = nombre;
+    return nombre != "" && nombre == password && password != "";
+  }
+
+
   Future<bool> validateUser(String nombre) async {
     var url = "https://script.google.com/macros/s/AKfycbxgDBoBsiAsQVDeL_vz8-d9yBuVPbSvpcs5AoYGUvshgPrilAIMVnyxr6arN94mwBI/exec?spreadsheetId=1OVQVSGBANuB3iPB89PXCKZSnUo-O8cMo_FIAZN4f74k&sheet=usuarios";
    

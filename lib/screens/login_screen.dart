@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:loginmobile/provider/user_provider.dart';
 import 'package:loginmobile/services/firebase_service.dart';
 import 'package:loginmobile/utils/constants.dart';
+import 'package:loginmobile/widgets/custom_button.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   
@@ -15,7 +18,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController usuarioController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
-    
+     final provider = context.watch<UserProvider>();
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 24, 62, 153),
       body: SingleChildScrollView(
@@ -63,27 +66,17 @@ class LoginScreen extends StatelessWidget {
                 ),
             
             const GoogleSignIn(),
-           // buildRowDivider(size: size),
-           // Padding(padding: EdgeInsets.only(bottom: size.height * 0.02)),
-           // SizedBox(
-           //   width: size.width * 0.8,
-           //   child: TextField(
-           //     decoration: InputDecoration(
-           //         contentPadding:
-           //             const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-           //         enabledBorder: border,
-           //         focusedBorder: border)),
-         // ),
+
          
           
-                //CustomButton(
-                //onPressed: () {
-                //    if(provider.login(usuarioController.text, passwordController.text)){
-                //          context.pushNamed('home');
-                //        }
-                //  }, 
-                //  text: "Iniciar Sesion"
-                //),
+                CustomButton(
+                onPressed: () {
+                    if(provider.login(usuarioController.text, passwordController.text)){
+                          context.pushNamed('sing-in');
+                        }
+                  }, 
+                  text: "Iniciar Sesion"
+                ),
                 const SizedBox(
                   height: 50,
                 ),
